@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children, title }) => {
@@ -14,15 +14,17 @@ const Layout = ({ children, title }) => {
         <div className="user-container"></div>
       </header>
       <nav className={styles.nav}>
-        <Link href="/tasks">
-          <a className={router.asPath === "/tasks" ? styles.active : ""}>
-            Tasks
-          </a>
+        <Link
+          href="/tasks"
+          className={router.asPath === "/tasks" ? styles.active : ""}
+        >
+          Tasks
         </Link>
-        <Link href="/integrations">
-          <a className={router.asPath === "/integrations" ? styles.active : ""}>
-            Integrations
-          </a>
+        <Link
+          href="/integrations"
+          className={router.asPath === "/integrations" ? styles.active : ""}
+        >
+          Integrations
         </Link>
       </nav>
       {children}

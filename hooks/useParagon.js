@@ -19,10 +19,10 @@ export default function useParagon(paragonUserToken) {
   // Listen for account state changes
   useEffect(() => {
     paragon.subscribe(SDK_EVENT.ON_INTEGRATION_INSTALL, updateUser);
-    paragon.subscribe("onIntegrationUninstall", updateUser);
+    paragon.subscribe(SDK_EVENT.ON_INTEGRATION_UNINSTALL, updateUser);
     return () => {
-      paragon.unsubscribe("onIntegrationInstall", updateUser);
-      paragon.unsubscribe("onIntegrationUninstall", updateUser);
+      paragon.unsubscribe(SDK_EVENT.ON_INTEGRATION_INSTALL, updateUser);
+      paragon.unsubscribe(SDK_EVENT.ON_INTEGRATION_UNINSTALL, updateUser);
     };
   }, []);
 

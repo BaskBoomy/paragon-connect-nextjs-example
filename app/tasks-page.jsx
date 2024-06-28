@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import TodoApp from "../components/TodoApp";

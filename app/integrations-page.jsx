@@ -1,14 +1,17 @@
+'use client';
+
 import { paragon } from '@useparagon/connect';
 import Layout from "../components/Layout";
 import useParagon from "../hooks/useParagon";
 import styles from "../styles/Integrations.module.css";
 
 export default function Integrations({ paragonUserToken }) {
-  const { user } = useParagon(paragonUserToken);
+  const { user, error } = useParagon(paragonUserToken);
 
   return (
     <Layout title="Integrations">
       <div className={styles.container}>
+        {error ? <pre>{error.stack}</pre> : null}
         {paragon.getIntegrationMetadata().map((integration) => {
           // Check the user state if this integration is enabled for the user
           const integrationEnabled =
